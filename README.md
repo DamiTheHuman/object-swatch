@@ -36,4 +36,4 @@ to discuss what you would like to change.
 
 ## License
 
-[MIT](./LICENSE.MD)
+[MIT](./LICENSE.md)
