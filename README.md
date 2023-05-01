@@ -3,6 +3,8 @@
 Object Swatch is a Unity tool that adds a drag/drop tool to the Unity editor that helps place 2D prefabs and sprites on the scene in Unity.
 
 ## Usage
+### Where the Magic Happens
+- The project loads game objects that are placed using the following schema Assets/Resources/[SUB_DIRECTORIES]/[PRIMARY_SWATCH]/[SECONDARY_SWATCH]
 #### Opening the Object Swatch Tool
 - To begin using this package, visit Window > Prefab Swatch... in the menu bar
 - This should open up the prefab swatch window
@@ -28,6 +30,9 @@ Object Swatch is a Unity tool that adds a drag/drop tool to the Unity editor tha
 
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
+
+## TODO
+- Make the magic more magical instead of being hardcoded
 
 ## License
 

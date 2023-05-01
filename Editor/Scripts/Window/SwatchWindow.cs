@@ -53,7 +53,7 @@ public class SwatchWindow : EditorWindow
     private int currentTab;
 
     /// <summary> Used to determine if the swatch is trying to load data </summary>
-    private bool loading = false;
+    private bool loading = true;
 
     private void Awake()
     {

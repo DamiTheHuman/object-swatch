@@ -111,33 +111,37 @@ public class ObjectAssetsService<T>
     {
         this.swatchList.Clear();
         this.subDirectoryNames = this.GetMainDirectoryHeaders(this.swatchWindow.GetAssetsDirectory()).ToArray();
-        this.swatchNames = this.GetDirectoriesWithObjects(this.swatchWindow.GetAssetsDirectory() + "/" + this.subDirectoryNames[this.swatchTab.GetSubDirectoryIndex()]).ToArray();
 
-        if (this.swatchNames.Length > 0)
+        if (this.subDirectoryNames.Length > 0)
         {
-            this.UpdateSwatchSubNames();
-            this.swatchTab.SetPreviousSubDirectoryIndex(this.swatchTab.GetSubDirectoryIndex());
-            this.prevSwatchIndex = -999;
-            this.spriteSwatchSubIndex = -999;
+            this.swatchNames = this.GetDirectoriesWithObjects(this.swatchWindow.GetAssetsDirectory() + "/" + this.subDirectoryNames[this.swatchTab.GetSubDirectoryIndex()]).ToArray();
 
-            //Save all the sub swatch data per primary swatch
-            foreach (ObjectSwatch<T> hCSwatch in this.swatchList)
+            if (this.swatchNames.Length > 0)
             {
+                this.UpdateSwatchSubNames();
+                this.swatchTab.SetPreviousSubDirectoryIndex(this.swatchTab.GetSubDirectoryIndex());
+                this.prevSwatchIndex = -999;
+                this.spriteSwatchSubIndex = -999;
 
-                if (hCSwatch.primarySwatch != "")
+                //Save all the sub swatch data per primary swatch
+                foreach (ObjectSwatch<T> hCSwatch in this.swatchList)
                 {
-                    hCSwatch.secondarySwatchNames = this.GetDirectoriesWithObjects(this.swatchWindow.GetAssetsDirectory() + "/" + this.subDirectoryNames[this.swatchTab.GetSubDirectoryIndex()] + "/" + "/" + hCSwatch.primarySwatch, 4, hCSwatch.primarySwatch);
-                    //List has no secondary swatches but may have primary swatches so fill the primary swatch list
-                    if (hCSwatch.secondarySwatchNames.Count == 0)
+
+                    if (hCSwatch.primarySwatch != "")
                     {
-                        hCSwatch.primarySwatchObjects = this.LoadAllObjects(hCSwatch.primarySwatch);
-                    }
-                    else
-                    {
-                        foreach (string secondarySwatchName in hCSwatch.secondarySwatchNames)
+                        hCSwatch.secondarySwatchNames = this.GetDirectoriesWithObjects(this.swatchWindow.GetAssetsDirectory() + "/" + this.subDirectoryNames[this.swatchTab.GetSubDirectoryIndex()] + "/" + "/" + hCSwatch.primarySwatch, 4, hCSwatch.primarySwatch);
+                        //List has no secondary swatches but may have primary swatches so fill the primary swatch list
+                        if (hCSwatch.secondarySwatchNames.Count == 0)
                         {
-                            Dictionary<string, List<SwatchData<T>>> secondaryObjects = this.LoadSecondarySwatchObjects(secondarySwatchName, hCSwatch.primarySwatch + "/" + secondarySwatchName);
-                            hCSwatch.secondarySwatchObjects.Add(secondaryObjects);
+                            hCSwatch.primarySwatchObjects = this.LoadAllObjects(hCSwatch.primarySwatch);
+                        }
+                        else
+                        {
+                            foreach (string secondarySwatchName in hCSwatch.secondarySwatchNames)
+                            {
+                                Dictionary<string, List<SwatchData<T>>> secondaryObjects = this.LoadSecondarySwatchObjects(secondarySwatchName, hCSwatch.primarySwatch + "/" + secondarySwatchName);
+                                hCSwatch.secondarySwatchObjects.Add(secondaryObjects);
+                            }
                         }
                     }
                 }

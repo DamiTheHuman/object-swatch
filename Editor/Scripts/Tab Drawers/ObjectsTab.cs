@@ -63,25 +63,23 @@ public class ObjectsTab<T> : SwatchTab
     /// </inheritdoc>
     public override void DrawTabTemplate(Vector2 mousePosition)
     {
-        if (this.objectAssetsService.GetSwatchList().Count == 0 || (this.objectAssetsService.HasNoObjects() == false && this.objectAssetsService.GetSwatchList()[this.objectAssetsService.GetSwatchIndex()].secondarySwatchObjects.Count == 0 && this.objectAssetsService.GetSwatchList()[this.objectAssetsService.GetSwatchIndex()].primarySwatchObjects.Count == 0))
-        {
-            if (this.swatchWindow.GetLoading() == false)
-            {
-                this.swatchWindow.SetLoading(true);
-            }
-
-            this.objectAssetsService.FetchTabData();
-        }
-
         if (this.swatchWindow.GetLoading())
         {
             EditorGUILayout.HelpBox("Attempting to load " + this.tag + "s...", MessageType.Info);
 
             return;
         }
-        else if (this.objectAssetsService.HasNoObjects())
+        else if (this.objectAssetsService.GetSwatchList().Count == 0 || this.objectAssetsService.HasNoObjects())
         {
-            EditorGUILayout.HelpBox(" spriteSwatchWindow project has no" + this.tag + "in the '" + this.swatchWindow.GetAssetsDirectory() + "' directory", MessageType.Error);
+            this.DrawUpdateButton();
+            EditorGUILayout.Space();
+            EditorGUILayout.HelpBox("The recommended structure to place " + this.tag + "(s) is Assets/Resources/[SUB_DIRECTORIES]/[PRIMARY_SWATCH]/[SECONDARY_SWATCH]/" + this.tag + "s", MessageType.Info);
+
+            this.swatchWindow.SetAssetsDirectory(EditorGUILayout.TextField("Assets Directory", this.swatchWindow.GetAssetsDirectory()));
+            this.UpdateAndDrawSubDirectoryNames();
+            string error = "The Project has no " + this.tag + "(s) following the schema  Assets/Resources/[SUB_DIRECTORIES]/[PRIMARY_SWATCH]/[SECONDARY_SWATCH]/!";
+            EditorGUILayout.HelpBox(error, MessageType.Error);
+            Debug.LogError(error);
 
             return;
         }
