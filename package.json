@@ -1,0 +1,21 @@
+{
+  "name": "com.dami-script.dami-script.object-swatch",
+  "version": "0.0.1",
+  "displayName": "Object Swatch",
+  "description": "A Prefab swatch editor tool that allows prefabs to be placed easily and uniformly on the scene",
+  "unity": "2021.3",
+  "unityRelease": "0b5",
+  "keywords": [
+    "Unity",
+    "Prefab"
+  ],
+  "author": {
+    "name": "Dami",
+    "email": "dami.script@outlook.com",
+    "url": "https://github.com/damiscript"
+  },
+  "type": "tool",
+  "dependencies": {
+    "com.unity.editorcoroutines": "1.0.0"
+  }
+}
