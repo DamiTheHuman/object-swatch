@@ -79,7 +79,6 @@ public class ObjectsTab<T> : SwatchTab
             this.UpdateAndDrawSubDirectoryNames();
             string error = "The Project has no " + this.tag + "(s) following the schema  Assets/Resources/[SUB_DIRECTORIES]/[PRIMARY_SWATCH]/[SECONDARY_SWATCH]/!";
             EditorGUILayout.HelpBox(error, MessageType.Error);
-            Debug.LogError(error);
 
             return;
         }

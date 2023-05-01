@@ -1,5 +1,5 @@
 {
-  "name": "com.dami-script.dami-script.object-swatch",
+  "name": "com.dami-script.object-swatch",
   "version": "0.0.1",
   "displayName": "Object Swatch",
   "description": "A Prefab swatch editor tool that allows prefabs to be placed easily and uniformly on the scene",
@@ -10,7 +10,7 @@
     "Prefab"
   ],
   "author": {
-    "name": "Dami",
+    "name": "Dami Script",
     "email": "dami.script@outlook.com",
     "url": "https://github.com/damiscript"
   },
