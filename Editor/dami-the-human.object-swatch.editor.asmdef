@@ -1,10 +1,10 @@
 {
-    "name": "dami-script.object-swatch.editor",
+    "name": "dami-the-human.object-swatch.editor",
     "rootNamespace": "",
     "references": [
         "Unity.EditorCoroutines.Editor"
     ],
-    "includePlatforms": [],
+    "includePlatforms": ["Editor"],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
